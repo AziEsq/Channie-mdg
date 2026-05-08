@@ -17,7 +17,8 @@
     "name": "Charleston House AL",
     "lat": 43.445704,
     "lng": -88.85467,
-    "state": "WI"
+    "state": "WI",
+    "opened": "2023-03-01"
   },
   {
     "name": "Charleston House MC",
@@ -149,7 +150,8 @@
     "name": "Edenbrook Green Bay/Parkview",
     "lat": 44.521758,
     "lng": -87.937669,
-    "state": "WI"
+    "state": "WI",
+    "opened": "2018-12-01"
   },
   {
     "name": "Edenbrook Lakeside",
@@ -330,7 +332,8 @@
     "name": "Willow Falls Senior Living",
     "lat": 41.553682,
     "lng": -88.120278,
-    "state": "IL"
+    "state": "IL",
+    "opened": "2024-04-01"
   },
   {
     "name": "Wolverton Glen",
