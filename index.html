@@ -359,20 +359,27 @@ function play() {
   reset();
 
   const dotDelay = 95;     // ms between dots
-  const stateGap = 280;    // pause between state groups
   let t = 250;             // initial delay so the basemap is visible first
 
-  STATE_ORDER.forEach(state => {
-    const facilities = projected.filter(f => f.state === state);
-    const order = shuffle(facilities);
-    order.forEach(f => {
-      setTimeout(() => {
-        const el = document.querySelector(`.facility-group[data-name="${CSS.escape(f.name)}"]`);
-        if (el) el.classList.add('lit');
-      }, t);
-      t += dotDelay;
-    });
-    t += stateGap;
+  // Sort facilities by opening date (chronological order)
+  const sorted = [...projected].sort((a, b) => {
+    // Facilities with opening dates come first, sorted chronologically
+    if (a.opened && b.opened) {
+      return new Date(a.opened) - new Date(b.opened);
+    }
+    // Facilities without dates go to the end
+    if (a.opened) return -1;
+    if (b.opened) return 1;
+    return 0;
+  });
+
+  // Light up facilities in chronological order
+  sorted.forEach(f => {
+    setTimeout(() => {
+      const el = document.querySelector(`.facility-group[data-name="${CSS.escape(f.name)}"]`);
+      if (el) el.classList.add('lit');
+    }, t);
+    t += dotDelay;
   });
 
   // After all dots: fade in connections, start heartbeat, show title
