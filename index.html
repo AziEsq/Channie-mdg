@@ -439,7 +439,7 @@ function play() {
     audio.play().catch(err => console.log('Audio play failed:', err));
   }
 
-  const dotDelay = 95;     // ms between dots
+  const dotDelay = 300;    // ms between dots
   let t = 250;             // initial delay so the basemap is visible first
 
   // Sort facilities by opening date (chronological order)
